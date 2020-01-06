@@ -5,7 +5,7 @@ import sys
 import socket   #socket模块
 
 
-local_ip = '15.83.248.221'  # 配置socket server绑定的本地IP
+local_ip = '***.***.***.***'  # 配置socket server绑定的本地IP
 local_port = 54321  # 配置socket server绑定的本地端口
 
 
