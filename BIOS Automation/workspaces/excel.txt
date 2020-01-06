@@ -1,0 +1,74 @@
+   public class excel
+    {
+        public string readexcel(string path, int sheet, int row, int column, Excel.Worksheet workSheet)
+        {
+            Excel.Range range = (Excel.Range)workSheet.Cells[row, column];
+            string value = Convert.ToString(range.Value2);
+
+            return value;
+
+        }
+
+        public void writeexcel(string path, int sheet, int row, int column, string input)
+        {
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook t = excelApp.Workbooks.Open(path);
+            //打开工作表
+            Excel.Worksheet workSheet = (Excel.Worksheet)t.Sheets[sheet];
+            //选取位置
+            Excel.Range range = (Excel.Range)workSheet.Cells[row, column];
+            //写入数值1
+            range.Value2 = input;
+
+
+            //写入数值2
+            //workSheet.Cells[row,column] = input;
+
+
+            t.Save();
+            //另存为
+            // t.SaveAs(System.Windows.Forms.Application.StartupPath + "\\Book2.xlsx");
+            //保存sheet
+            // workSheet.SaveAs(System.Windows.Forms.Application.StartupPath + "\\Book3.xlsx");
+
+            workSheet = null;
+            t = null;
+            excelApp.Quit();
+            excelApp = null;
+
+        }
+
+        public int getrows(string path, int sheet)
+        {
+            //打开excel
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook t = excelApp.Workbooks.Open(path);
+            //打开工作表
+            Excel.Worksheet workSheet = (Excel.Worksheet)t.Sheets[sheet];
+            int j = workSheet.UsedRange.Rows.Count;
+            workSheet = null;
+            t = null;
+            excelApp.Quit();
+            excelApp = null;
+            return j;
+
+        }
+
+        public int getcolumns(string path, int sheet)
+        {
+            //打开excel
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook t = excelApp.Workbooks.Open(path);
+            //打开工作表
+            Excel.Worksheet workSheet = (Excel.Worksheet)t.Sheets[sheet];
+            int j = workSheet.UsedRange.Columns.Count;
+
+            workSheet = null;
+            t = null;
+            excelApp.Quit();
+            excelApp = null;
+            return j;
+
+
+        }
+    }
