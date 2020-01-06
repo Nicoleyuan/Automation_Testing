@@ -3,7 +3,7 @@
 
 import socket
 
-server_ip = "***.***.***.***"
+server_ip = "***.***.***.***"  #填写server地址
 server_port = "54321"
 
 BUF_SIZE = 1024  #设置缓冲区的大小
